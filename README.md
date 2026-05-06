@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NoteFlow
 
-## Getting Started
+NoteFlow is a private, zero-setup note workspace built from the PRD for this task. It runs entirely in the browser and ships as a static Next.js 16 site with rich editing, notebooks, tags, search, trash recovery, local persistence, sample data, responsive layouts, and GitHub Pages deployment.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 App Router with static export
+- React 19 + TypeScript
+- Tailwind CSS v4
+- Tiptap rich text editor
+- localStorage persistence
+- GitHub Actions + GitHub Pages deployment
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `pnpm dev` - start the development server
+- `pnpm lint` - run ESLint
+- `pnpm build` - create the static export in `out/`
 
-## Learn More
+## GitHub Pages
 
-To learn more about Next.js, take a look at the following resources:
+The repository includes `.github/workflows/deploy.yml`, which builds the project and publishes the `out/` directory to GitHub Pages on every push to `main`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Production assets are served from:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```txt
+/notes-turkey-001/
+```
 
-## Deploy on Vercel
+That base path is already configured in `next.config.ts`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Core features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 3-panel note workflow with compact tablet/mobile navigation
+- Notebook creation, renaming, deletion, and note counts
+- Rich editing with headings, bold, italic, strike, lists, task lists, code blocks, blockquotes, and dividers
+- Debounced autosave with local-only persistence
+- Tag chips, sidebar filters, and full-text search
+- Trash with restore and permanent delete
+- Per-note Markdown and plain text export
+- Dark/light theme toggle and system-theme first load
